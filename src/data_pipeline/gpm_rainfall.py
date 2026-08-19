@@ -27,6 +27,12 @@ def engineer_rainfall_features(series):
         df[f"rain_{w}d"] = df["rain_1d"].rolling(w, min_periods=1).sum()
     df["rain_max3d"] = df["rain_1d"].rolling(3, min_periods=1).max()
     df["is_monsoon"] = df.index.month.isin(MONSOON_MONTHS).astype(int)
+
+    # ── Drop trailing NaN rows (NASA POWER reporting delay) ──────────────────
+    # NASA POWER has a 2-3 day lag. The last 1-3 rows may have NaN rain_1d.
+    # Drop them so .iloc[-1] always returns the last VALID observation.
+    df = df.dropna(subset=["rain_1d"])
+
     return df
 
 def download_district(district, start="2015-01-01", end="2024-12-31"):

@@ -12,7 +12,8 @@ TERRAIN_FEATURES = [
 
 RAINFALL_FEATURES = [
     "rain_1d","rain_3d","rain_7d","rain_15d","rain_max3d","is_monsoon",
-    "slope_x_rain7d","twi_x_rain15d"
+    "slope_x_rain7d","twi_x_rain15d",
+    "rain_intensity_ratio", "soil_saturation_proxy"
 ]
 
 def load_data(mode="terrain_only"):
