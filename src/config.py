@@ -1,5 +1,22 @@
 import os
 
+from dotenv import load_dotenv
+
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+load_dotenv(os.path.join(BASE_DIR, ".env"))
+
+NASA_POWER_URL = os.getenv(
+    "NASA_POWER_URL",
+    "https://power.larc.nasa.gov/api/temporal/daily/point",
+)
+API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:8000")
+ALLOWED_ORIGINS = [
+    origin.strip()
+    for origin in os.getenv("ALLOWED_ORIGINS", "http://localhost:5173").split(",")
+    if origin.strip()
+]
+
 DISTRICTS = [
     {"name": "Wayanad",          "state": "Kerala",      "lat": 11.6854, "lon": 76.1320},
     {"name": "Idukki",           "state": "Kerala",      "lat": 9.9189,  "lon": 77.1025},
@@ -47,7 +64,6 @@ def score_to_level(score):
             return level
     return "HIGH"
 
-BASE_DIR          = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_RAW          = os.path.join(BASE_DIR, "data", "raw")
 DATA_PROCESSED    = os.path.join(BASE_DIR, "data", "processed")
 OUTPUTS_DIR       = os.path.join(BASE_DIR, "outputs")

@@ -14,7 +14,13 @@ from pydantic import BaseModel
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-from config import OUTPUTS_DIR, DISTRICT_NAMES, DISTRICTS, score_to_level
+from config import (
+    OUTPUTS_DIR,
+    DISTRICT_NAMES,
+    DISTRICTS,
+    ALLOWED_ORIGINS,
+    score_to_level,
+)
 from model.explain import explain_prediction, load_model
 
 
@@ -155,11 +161,9 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="RainRisk API", version="1.0", lifespan=lifespan)
 
 # ── CORS ──────────────────────────────────────────────────────────────────────
-# Set ALLOWED_ORIGINS on the host, e.g. "https://rainrisk.vercel.app,http://localhost:5173"
-_origins = [o.strip() for o in os.getenv("ALLOWED_ORIGINS", "http://localhost:5173").split(",") if o.strip()]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=_origins,
+    allow_origins=ALLOWED_ORIGINS,
     allow_methods=["GET", "POST"],
     allow_headers=["*"],
 )

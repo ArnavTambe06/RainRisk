@@ -1,9 +1,7 @@
 import os, sys, requests, numpy as np, pandas as pd
 from datetime import datetime, timedelta
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from config import DISTRICTS, MONSOON_MONTHS, RAINFALL_WINDOWS, RAINFALL_DIR
-
-NASA_POWER_URL = "https://power.larc.nasa.gov/api/temporal/daily/point"
+from config import DISTRICTS, MONSOON_MONTHS, RAINFALL_WINDOWS, RAINFALL_DIR, NASA_POWER_URL
 
 def fetch_daily_rainfall(lat, lon, start, end):
     params = {

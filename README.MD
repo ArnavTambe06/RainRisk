@@ -86,9 +86,17 @@ cd frontend
 npm install
 ```
 
-**Required credentials:**
+For local configuration, create a `.env` file in the project root:
+
+```env
+NASA_POWER_URL=https://power.larc.nasa.gov/api/temporal/daily/point
+API_BASE_URL=http://localhost:8000
+ALLOWED_ORIGINS=http://localhost:5173
+```
+
+**Provider credentials for authenticated alternatives:**
 - NASA Earthdata account (free) — needed for GPM/POWER rainfall API access
-- Set credentials as environment variables (e.g. in a `.env` file):
+- If required, set them in `.env`:
   ```
   NASA_EARTHDATA_USERNAME=your_username
   NASA_EARTHDATA_PASSWORD=your_password

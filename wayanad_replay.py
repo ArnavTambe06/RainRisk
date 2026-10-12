@@ -1,6 +1,9 @@
 import requests
 
-BASE = "http://localhost:8000/predict"
+from src.config import API_BASE_URL
+
+
+BASE = f"{API_BASE_URL.rstrip('/')}/predict"
 
 # Real NASA POWER values for Wayanad July 2024
 # rain_3d, rain_7d, rain_15d computed as rolling sums from actual daily data

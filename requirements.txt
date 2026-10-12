@@ -1,0 +1,20 @@
+# Data processing
+numpy
+pandas
+geopandas
+
+# Machine learning and explainability
+scikit-learn
+xgboost
+shap
+
+# Visualization
+matplotlib
+
+# API and HTTP client
+fastapi
+uvicorn
+requests
+
+# Environment configuration
+python-dotenv

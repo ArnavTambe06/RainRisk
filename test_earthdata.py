@@ -1,7 +1,10 @@
 # save as test_earthdata.py in RAINRISK root
 import requests
 
-r = requests.get("https://power.larc.nasa.gov/api/temporal/daily/point", params={
+from src.config import NASA_POWER_URL
+
+
+r = requests.get(NASA_POWER_URL, params={
     "parameters": "PRECTOTCORR",
     "community":  "RE",
     "longitude":  76.1320,
